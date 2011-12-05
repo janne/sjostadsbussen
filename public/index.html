@@ -10,8 +10,11 @@
         <script src="javascripts/application.js" type="text/javascript"></script>
 	</head>
     <body>
-        <h1>Välkommen till Sjöstadsbussen!</h1>
-        <div id="next"></div>
-        <div id="plusone"></div>
+        <div id="loading">
+            Hämtar data...
+        </div>
+        <div id="loaded" style="display: none";>
+            Nästa buss går om <span id="next"></span>, därefter om <span id="plusone"></span>.
+        </div>
     </body>
 </html>
