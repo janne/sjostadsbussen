@@ -11,7 +11,7 @@ get '/departures.json' do
   siteId = 1365
   key = ENV['API_KEY']
   sess.base_url = "https://api.trafiklab.se/"
-  response = sess.get "/sl/realtid/GetDpsDepartures.json?key=#{key}&siteId=#{siteId}"
+  response = sess.get "/sl/realtid/GetDpsDepartures.json?key=#{key}&siteId=#{siteId}&timeWindow=60"
   response.body
 end
 
