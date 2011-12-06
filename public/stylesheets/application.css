@@ -14,15 +14,16 @@ div#loading {
 }
 
 table {
-    width: 90%;
+    width: 100%;
     border-collapse: collapse;
     margin: 0 auto;
     margin-top: 20px;
     border: solid 4px #222;
 }
 
-td.lineNumber { width: 25%; }
-td.time { min-width: 25%; }
+td.lineNumber { width: 20%; }
+td.time { width: 20%; }
+td.destination { width: 60%; }
 
 td {
     height: 30px;
@@ -30,5 +31,5 @@ td {
     border-color: #222;
     border-style: solid;
     border-width: 4px 2px 4px 2px;
-    padding-left: 8px;
+    padding: 8px;
 }

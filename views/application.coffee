@@ -17,7 +17,7 @@ updateTable = ->
       setTimeout updateTable, 5000
 
 resizeFont = ->
-  $('body').css 'font-size', "#{Math.round($('table').width()/30)}px"
+  $('body').css 'font-size', "#{Math.round($('table').width()/24)}px"
 
 $(window).resize -> resizeFont()
 
