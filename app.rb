@@ -1,6 +1,6 @@
 require 'sinatra'
 require 'coffee-script'
-require './trafiklab'
+require './lib/trafiklab'
 
 get '/' do
   send_file File.join('public', 'index.html')
