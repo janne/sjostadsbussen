@@ -8,7 +8,7 @@ end
 
 get '/departures.json' do
   sess = Patron::Session.new
-  siteId = 1365
+  siteId = 1366
   key = ENV['API_KEY']
   sess.base_url = "https://api.trafiklab.se/"
   response = sess.get "/sl/realtid/GetDpsDepartures.json?key=#{key}&siteId=#{siteId}&timeWindow=60"
