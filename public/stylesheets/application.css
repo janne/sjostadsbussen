@@ -13,6 +13,14 @@ div#loading {
     margin-top: 20px;
 }
 
+div#description {
+  font-size: 12px;
+  font-weight: normal;
+  color: #555;
+  text-align: right;
+  padding: 2px;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
