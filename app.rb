@@ -7,6 +7,7 @@ get '/' do
 end
 
 get '/departures/:site_id.json' do
+  content_type 'application/json'
   trafiklab = Trafiklab.new(ENV['API_KEY'])
   trafiklab.departures(params[:site_id]).to_json
 end
