@@ -1,5 +1,7 @@
 $ ->
-    $.getJSON '/departures/1366.json', (data) ->
+    afternoon = ((new Date()).getHours() >= 12)
+    site_id = if afternoon then 1366 else 1552
+    $.getJSON "/departures/#{site_id}.json", (data) ->
         $('#loading').hide()
         t = "<table id='departures'>"
         t += "<tr id='row_#{row}'><td class='lineNumber'></td><td class='destination'></td><td class='time'></td></tr>" for row in [0..2]
