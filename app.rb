@@ -6,9 +6,9 @@ get '/' do
   send_file File.join('public', 'index.html')
 end
 
-get '/departures.json' do
+get '/departures/:site_id.json' do
   trafiklab = Trafiklab.new(ENV['API_KEY'])
-  trafiklab.departures(1366).to_json
+  trafiklab.departures(params[:site_id]).to_json
 end
 
 get '/javascripts/application.js' do

@@ -1,5 +1,5 @@
 $ ->
-    $.getJSON '/departures.json', (data) ->
+    $.getJSON '/departures/1366.json', (data) ->
         $('#loading').hide()
         t = "<table id='departures'>"
         t += "<tr id='row_#{row}'><td class='lineNumber'></td><td class='destination'></td><td class='time'></td></tr>" for row in [0..2]
