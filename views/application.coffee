@@ -9,7 +9,7 @@ updateTable = ->
       t += "</table>"
       $('#departures').replaceWith t
       row = 0
-      for bus in data when (afternoon && bus.Destination isnt "Mariatorget") || (!afternoon && bus.Destination is "Mariatorget")
+      for bus in data when (afternoon && !bus.Destination.match("Mariatorget")) || (!afternoon && bus.Destination.match("Mariatorget"))
           $("table#departures tr#row_#{row} td.lineNumber").text(bus.LineNumber)
           $("table#departures tr#row_#{row} td.destination").text(bus.Destination)
           $("table#departures tr#row_#{row} td.time").text(bus.DisplayTime)
