@@ -13,3 +13,4 @@ $ ->
             $("table#departures tr#row_#{row} td.destination").text(bus.Destination)
             $("table#departures tr#row_#{row} td.time").text(bus.DisplayTime)
             row += 1
+            break if row > 2
