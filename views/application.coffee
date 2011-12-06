@@ -1,5 +1,4 @@
 updateTable = ->
-  console.log "Updating table..."
   afternoon = ((new Date()).getHours() >= 12)
   site_id = if afternoon then 1366 else 1552
   $.getJSON "/departures/#{site_id}.json", (data) =>
@@ -17,4 +16,11 @@ updateTable = ->
           break if row > 2
       setTimeout updateTable, 5000
 
-$ -> updateTable()
+resizeFont = ->
+  $('body').css 'font-size', "#{Math.round($('table').width()/30)}px"
+
+$(window).resize -> resizeFont()
+
+$ ->
+  resizeFont()
+  updateTable()
