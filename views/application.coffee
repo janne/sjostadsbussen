@@ -14,12 +14,11 @@ updateTable = ->
           $("table#departures tr#row_#{row} td.time").text(bus.DisplayTime)
           row += 1
           break if row > 2
-      setTimeout updateTable, 5000
 
-resizeFont = ->
-  $('body').css 'font-size', "#{Math.round($('table').width()/24)}px"
+resizeFont = -> $('body').css 'font-size', "#{Math.round($('table').width()/24)}px"
 
 $(window).resize -> resizeFont()
+setInterval updateTable, 30000
 
 $ ->
   resizeFont()
