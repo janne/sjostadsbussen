@@ -26,7 +26,6 @@ td.time { width: 20%; }
 td.destination { width: 60%; }
 
 td {
-    height: 30px;
     background: #ccc;
     border-color: #222;
     border-style: solid;
