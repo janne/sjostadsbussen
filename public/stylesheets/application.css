@@ -19,13 +19,14 @@ div#description {
   color: #ccc;
   text-align: right;
   padding: 2px;
+  width: 90%;
+  margin: 0 auto;
 }
 
 table {
-    width: 100%;
+    width: 90%;
     border-collapse: collapse;
-    margin: 0 auto;
-    margin-top: 20px;
+    margin: 40px auto 10px;
     border: solid 4px #222;
 }
 
