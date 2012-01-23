@@ -20,6 +20,7 @@ Traffic = Ember.Object.extend({
             }
             for(var i=0; i<data.length; i++) {
                 if(rightDirection(data[i], App.traffic.get('isAfternoon'))) { deps.push(data[i]) }
+                if (deps.length == 3) break;
             }
             App.traffic.set('departures', deps);
         });
