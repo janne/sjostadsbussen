@@ -1,19 +1,18 @@
 ### Q: När går nästa buss till Sjöstan?
 ### A: [sjostadsbussen.se](http://www.sjostadsbussen.se/)
 
-Applikationen består av två komponenter, en serverkomponent byggd i Sinatra som
-hämtar informationen från trafiklab.se och en klientkomponent byggd i
-CoffeeScript som presenterar informationen för användaren.
+Applikationen består av två komponenter, en serverkomponent byggd på
+[Sinatra](http://www.sinatrarb.com/) som hämtar informationen från trafiklab.se
+och en klientkomponent byggd på [Ember.js](http://www.emberjs.com/) som
+presenterar informationen för användaren.
 
-Applikationen använder sig av Procfile och är därför lätt att driftsätta på
-Heroku. Det är också lämpligt att använda sig av tekniken för att starta
-applikationen lokalt, närmare bestämt
-[Foreman](https://github.com/ddollar/foreman).
+Det är en Rack-applikation, förberedd för drift på Unicorn. Inkluderat finns
+också en Procfile och det är lätt att driftsätta den på Heroku. 
 
-För att autenticeringen mot Trafiklab skall fungera behövs en API-nyckel till
-SL Realtidsinformation. Den erhålles på deras hemsida och sätts sedan som
-miljövariabeln API_KEY. På Heroku definieras den genom `heroku config:add
-API_KEY=yourkey`.
+För att autenticeringen mot [Trafiklab](http://www.trafiklab.se/) skall fungera
+behövs en API-nyckel till SL Realtidsinformation. Den erhålles på deras hemsida
+och sätts i config/trafiklab.yml. På Heroku definieras den genom `heroku
+config:add API_KEY=yourkey`.
 
 Tjänsten går också att använda som ett API, anropa /departures/SITE_ID.json där
 SITE_ID bestämmer hållplats utifrån något av följande:
