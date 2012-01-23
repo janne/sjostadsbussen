@@ -1,17 +1,37 @@
 <!doctype html>
 <html lang="en">
-<meta charset="utf-8">
-<meta name="description" content="Visar tiderna för nästa buss till Sjöstan (linje 74).">
-<link href="stylesheets/application.css" media="screen" rel="stylesheet">
-<title>Sjöstadsbussen</title>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Visar tiderna för nästa buss till Sjöstan (linje 74).">
+        <link href="stylesheets/application.css" media="screen" rel="stylesheet">
+        <title>Sjöstadsbussen</title>
+    </head>
+    <body>
 
-<div id="loading">
-  <img src="/images/spinner.gif" alt="Loading">
-</div>
+        <script type="text/x-handlebars">
+        {{#if App.traffic.departures}}
+            <table id='departures'>
+                {{#each App.traffic.departures}}
+                    <tr>
+                        <td class='lineNumber'>{{LineNumber}}</td>
+                        <td class='destination'>{{Destination}}</td>
+                        <td class='time'>{{DisplayTime}}</td>
+                    </tr>
+                {{/each}}
+            </table>
+            <div id="description">
+                Buss 74 fr&aring;n {{App.traffic.currentSite}} i riktning
+                {{#if App.traffic.isAfternoon}} hem&aring;t {{else}} mot jobbet {{/if}}
+            </div>
+        {{else}}
+            <div id="loading"><img src="/images/spinner.gif" alt="Loading"></div>
+        {{/if}}
+        </script>
 
-<table id="departures"></table>
-<div id="description"></div>
-<a id="forkme" href="http://github.com/janne/sjostadsbussen">Fork me on GitHub</a>
+        <a id="forkme" href="http://github.com/janne/sjostadsbussen">Fork me on GitHub</a>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="javascripts/application.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="javascripts/ember-0.9.3.min.js"></script>
+        <script src="javascripts/application.js"></script>
+    </body>
+</html>
