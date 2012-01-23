@@ -13,8 +13,4 @@ class App < Sinatra::Application
     trafiklab = Trafiklab.new(ENV['API_KEY'] || YAML.load_file('config/config.yml')['API_KEY'])
     trafiklab.departures(params[:site_id]).to_json
   end
-
-  get '/javascripts/application.js' do
-    coffee :application
-  end
 end
