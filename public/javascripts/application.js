@@ -13,6 +13,11 @@ Traffic = Ember.Object.extend({
     currentSite: function() { return this.get('sites')[this.get('currentSiteId')] }.property('sites', 'currentSiteId'),
     isAfternoon: function() { return (new Date).getHours() >= 12 }.property(),
     departures: [],
+    lastUpdateAt: function() { 
+        var d=new Date;
+        var pad=function(n){return n<10 ? '0'+n : n};
+        return d.getFullYear() + "-" + pad(d.getMonth()+1) + '-' + pad(d.getDate()) + " " + pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds());
+    }.property('departures'),
     refresh: function() {
         $.getJSON("/departures/" + this.get('currentSiteId') + ".json", function(data) {
             deps = [];

@@ -23,7 +23,8 @@
             </table>
             <div id="description">
                 Buss 74 fr&aring;n {{App.traffic.currentSite}} i riktning
-                {{#if App.traffic.isAfternoon}} hem&aring;t {{else}} mot jobbet {{/if}}
+                {{#if App.traffic.isAfternoon}} hem&aring;t {{else}} mot jobbet {{/if}}<br />
+                Senast uppdaterad {{App.traffic.lastUpdateAt}}
             </div>
         {{/if}}
         </script>
