@@ -20,3 +20,4 @@ Traffic = Ember.Object.extend({
 // Setup
 App.traffic = Traffic.create();
 App.traffic.refresh();
+setInterval(function() { App.traffic.refresh() }, 15000);
