@@ -13,7 +13,16 @@ Traffic = Ember.Object.extend({
     isAfternoon: function() { return (new Date()).getHours() >= 12 }.property(),
     departures: [],
     refresh: function() {
-        $.getJSON("/departures/" + this.get('currentSiteId') + ".json", function(data) { App.traffic.set('departures', data) });
+        $.getJSON("/departures/" + this.get('currentSiteId') + ".json", function(data) {
+            deps = [];
+            function rightDirection(o, afternoon) {
+                return (afternoon && !o.Destination.match("Mariatorget")) || (!afternoon && o.Destination.match("Mariatorget"));
+            }
+            for(var i=0; i<data.length; i++) {
+                if(rightDirection(data[i], App.traffic.get('isAfternoon'))) { deps.push(data[i]) }
+            }
+            App.traffic.set('departures', deps);
+        });
     }
 });
 
