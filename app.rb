@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'coffee-script'
+require 'yaml'
 require './lib/trafiklab'
 
 get '/' do
@@ -8,7 +9,7 @@ end
 
 get '/departures/:site_id.json' do
   content_type 'application/json'
-  trafiklab = Trafiklab.new(ENV['API_KEY'])
+  trafiklab = Trafiklab.new(ENV['API_KEY'] || YAML.load_file('config/config.yml')['API_KEY'])
   trafiklab.departures(params[:site_id]).to_json
 end
 
