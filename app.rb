@@ -1,5 +1,4 @@
 require 'sinatra'
-require 'coffee-script'
 require 'yaml'
 require './lib/trafiklab'
 
