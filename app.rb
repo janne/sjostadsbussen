@@ -9,7 +9,7 @@ class App < Sinatra::Application
 
   get '/departures/:site_id.json' do
     content_type 'application/json'
-    trafiklab = Trafiklab.new(ENV['API_KEY'] || YAML.load_file('config/config.yml')['API_KEY'])
+    trafiklab = Trafiklab.new(ENV['API_KEY'] || YAML.load_file('config/trafiklab.yml')['API_KEY'])
     trafiklab.departures(params[:site_id]).to_json
   end
 end
