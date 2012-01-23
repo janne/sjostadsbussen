@@ -9,7 +9,9 @@
     <body>
 
         <script type="text/x-handlebars">
-        {{#if App.traffic.departures}}
+        {{#if App.traffic.isLoading}}
+            <div id="loading"><img src="/images/spinner.gif" alt="Loading"></div>
+        {{else}}
             <table id='departures'>
                 {{#each App.traffic.departures}}
                     <tr>
@@ -23,8 +25,6 @@
                 Buss 74 fr&aring;n {{App.traffic.currentSite}} i riktning
                 {{#if App.traffic.isAfternoon}} hem&aring;t {{else}} mot jobbet {{/if}}
             </div>
-        {{else}}
-            <div id="loading"><img src="/images/spinner.gif" alt="Loading"></div>
         {{/if}}
         </script>
 

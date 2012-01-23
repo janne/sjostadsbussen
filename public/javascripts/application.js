@@ -8,6 +8,7 @@ Traffic = Ember.Object.extend({
         4633: 'Sickla Strand',
         9820: 'Sickla Udde'
     },
+    isLoading: true,
     currentSiteId: function() { return this.get('isAfternoon') ? 1366 : 1552 }.property('isAfternoon'),
     currentSite: function() { return this.get('sites')[this.get('currentSiteId')] }.property('sites', 'currentSiteId'),
     isAfternoon: function() { return (new Date()).getHours() >= 12 }.property(),
@@ -23,6 +24,7 @@ Traffic = Ember.Object.extend({
                 if (deps.length == 3) break;
             }
             App.traffic.set('departures', deps);
+            App.traffic.set('isLoading', false);
         });
     }
 });
