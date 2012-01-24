@@ -1,6 +1,6 @@
 window.App = Ember.Application.create();
 
-Traffic = Ember.Object.extend({
+App.traffic = Ember.Object.create({
     sites: {
         1365: 'S&ouml;dra Station',
         1366: 'Wollmar Yxkullsg',
@@ -47,5 +47,4 @@ var view = Ember.View.create({
 });
 
 view.append();
-App.traffic = Traffic.create();
 App.traffic.refresh();
