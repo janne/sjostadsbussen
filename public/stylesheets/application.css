@@ -10,13 +10,23 @@ body {
   margin: 20px auto 0;
 }
 
-#description {
+#footer {
+  width: 90%;
+  margin: 0 auto;
   font-size: 12px;
   font-weight: normal;
   color: #ccc;
+}
+
+#footer #links {
+  float: left;
+  margin: 2px;
+}
+
+#footer #description {
   text-align: right;
-  padding: 2px 5.5%;
-  width: 88%;
+  float: right;
+  margin: 2px;
 }
 
 table {
