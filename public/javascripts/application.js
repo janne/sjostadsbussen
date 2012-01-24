@@ -42,6 +42,10 @@ Traffic = Ember.Object.extend({
     }
 });
 
-// Setup
+var view = Ember.View.create({
+  templateName: 'departures'
+});
+
+view.append();
 App.traffic = Traffic.create();
 App.traffic.refresh();
