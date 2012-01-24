@@ -19,22 +19,26 @@ Traffic = Ember.Object.extend({
         return d.getFullYear() + "-" + pad(d.getMonth()+1) + '-' + pad(d.getDate()) + " " + pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds());
     }.property('departures'),
     refresh: function() {
-        $.getJSON("/departures/" + this.get('currentSiteId') + ".json", function(data) {
-            deps = [];
-            function rightDirection(o, afternoon) {
-                return (afternoon && !o.Destination.match("Mariatorget")) || (!afternoon && o.Destination.match("Mariatorget"));
-            }
-            for(var i=0; i<data.length; i++) {
-                if(rightDirection(data[i], App.traffic.get('isAfternoon'))) { deps.push(data[i]) }
-                if (deps.length == 3) break;
-            }
-            App.traffic.set('departures', deps);
-            App.traffic.set('isLoading', false);
-        });
+        $.ajax("/departures/" + App.traffic.get('currentSiteId') + ".json")
+          .done(function(data) {
+              deps = [];
+              function rightDirection(o, afternoon) {
+                  return (afternoon && !o.Destination.match("Mariatorget")) || (!afternoon && o.Destination.match("Mariatorget"));
+              }
+              for(var i=0; i<data.length; i++) {
+                  if(rightDirection(data[i], App.traffic.get('isAfternoon'))) { deps.push(data[i]) }
+                  if (deps.length == 3) break;
+              }
+              App.traffic.set('departures', deps);
+              App.traffic.set('isLoading', false);
+              setTimeout(App.traffic.refresh, 10000);
+          })
+          .fail(function() {
+              setTimeout(App.traffic.refresh, 1000);
+          })
     }
 });
 
 // Setup
 App.traffic = Traffic.create();
 App.traffic.refresh();
-setInterval(function() { App.traffic.refresh() }, 15000);
