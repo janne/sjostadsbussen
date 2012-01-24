@@ -18,6 +18,9 @@ Traffic = Ember.Object.extend({
         var pad=function(n){return n<10 ? '0'+n : n};
         return d.getFullYear() + "-" + pad(d.getMonth()+1) + '-' + pad(d.getDate()) + " " + pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds());
     }.property('departures'),
+    description: function() {
+        return "Buss 74 från " + this.get('currentSite') + " i riktning " + (this.get('isAfternoon') ? "hemåt" : "mot jobbet")
+    }.property('departures'),
     refresh: function() {
         $.ajax("/departures/" + App.traffic.get('currentSiteId') + ".json")
           .done(function(data) {
